@@ -1,0 +1,11 @@
+C:\Users\Администратор.000\Documents\GitHub\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Администратор.000\Documents\GitHub\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\Администратор.000\Documents\GitHub\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\bin\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\bin\Debug\ConsoleApp1.pdb
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\obj\Debug\AdaptiveLighter.csprojResolveAssemblyReference.cache
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\obj\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\StohModel\App\obj\Debug\ConsoleApp1.pdb
