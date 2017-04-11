@@ -38,7 +38,7 @@ namespace AdaptiveLighter
                     int n = 1;
                     //for (int n = 1; n <= 20; n++)
                     //{
-                    for (int k = 20; k <= 1; k--)
+                    //for (int k = 20; k <= 1; k--)
                         for (int i = 0; i < resultInterval.GetLength(0); i++)
                             for (int j = 0; j < resultInterval.GetLength(1); j++)
                             {
