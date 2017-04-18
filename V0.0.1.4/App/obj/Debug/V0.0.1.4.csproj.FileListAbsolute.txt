@@ -1,0 +1,7 @@
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\obj\Debug\V0.0.1.4.csprojResolveAssemblyReference.cache
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\obj\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\obj\Debug\ConsoleApp1.pdb
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\bin\Debug\ConsoleApp1.exe
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\bin\Debug\ConsoleApp1.pdb
+C:\Users\Администратор.000\Documents\GitHub\StohModel\V0.0.1.4\App\obj\Debug\V0.0.1.4.csproj.ResolveComReference.cache
