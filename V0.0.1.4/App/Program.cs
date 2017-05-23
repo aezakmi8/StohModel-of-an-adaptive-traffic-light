@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Threading.Tasks;
+using System.Data.OleDb;
+using System.Data;
 
 namespace ConsoleApp1
 {
@@ -11,6 +13,34 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+
+            OleDbConnection connect = new OleDbConnection();
+            DataTable DtTable = new DataTable();
+            using (OleDbConnection dbcon = new OleDbConnection(connString))
+            {
+                OleDbCommand comm = new OleDbCommand("SELECT Crossroad, Refcrossroad, Direct, Var_lambda, Var_Mu FROM RoadsNet", connect);
+                dbcon.Open();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(comm);
+                adapter.Fill(DtTable);
+            }
+            //массив отношения перекрёстков и направлениям к машинам
+            int[][,] JagArrofData = new int[10][,];
+            for (int i = 0; i < 10; i++)
+            {
+                JagArrofData[i] = new int[4, 5]; //4 строки, 5 столбцов
+                for (int a = 0; a < 4; a++) //DtTable.Rows.Count
+                {
+                    JagArrofData[i][a, 0] = Convert.ToInt32(DtTable.Rows[a]["Crossroad"]);
+                    JagArrofData[i][a, 1] = Convert.ToInt32(DtTable.Rows[a]["Refcrossroad"]);
+                    JagArrofData[i][a, 2] = Convert.ToInt32(DtTable.Rows[a]["Direct"]);
+                    JagArrofData[i][a, 3] = Convert.ToInt32(DtTable.Rows[a]["Var_lambda"]);
+                    JagArrofData[i][a, 4] = Convert.ToInt32(DtTable.Rows[a]["Var_Mu"]);
+                    Console.Write("Отсчётный светофор {0}, Светофор(j) {1}, Направление(i) {2}, Lambda", JagArrofData[i][a, 1], JagArrofData[i][a, 2], "{3},", "Mu", JagArrofData[i][a, 1], JagArrofData[i][a, 2], "{4},", JagArrofData[i][a, 0], JagArrofData[i][a, 1], JagArrofData[i][a, 2], JagArrofData[i][a, 3], JagArrofData[i][a, 4]);
+                    Console.WriteLine();
+                }
+            }
+
+            //выявление светофоров которые необходимо разгрузить, пока не применимо
             int z = 0; //кол-во проблемных сфетофоров
             int x = 0;
             int y = 10;
@@ -39,6 +69,7 @@ namespace ConsoleApp1
                     z1++;
                 }
             }
+            /*
             //инициализация Excel
             Excel.Application xlApp = new Excel.Application(); //открыть эксель
             Excel.Workbook xlWb = xlApp.Workbooks.Open(@"C:\Users\Администратор.000\Desktop\AdaptiveLight.xlsx");
@@ -67,13 +98,14 @@ namespace ConsoleApp1
                 xlWb.Close(false); //закрываем файл
                 xlApp.Quit(); //закрываем Excel
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("err" + ex);
                 xlWb.Close(false);
                 xlApp.Quit();
                 // обрабатываем ошибку
             }
-
+            */
             {
                 Console.ReadKey();
             }
