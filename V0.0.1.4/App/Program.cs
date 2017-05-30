@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Threading.Tasks;
-using System.Data.OleDb;
+using System.Data.Odbc;
 using System.Data;
 
 namespace ConsoleApp1
@@ -13,29 +13,29 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-
-            OleDbConnection connect = new OleDbConnection();
+            string connString = @"Driver={Microsoft Access Driver (*.mdb)};Dbq=C:\Users\Denzl\Desktop\V0.0.1.4\App\db_Stoh_Model.mdb;Uid=Admin;Pwd=test;";
             DataTable DtTable = new DataTable();
-            using (OleDbConnection dbcon = new OleDbConnection(connString))
+            using (OdbcConnection dbcon = new OdbcConnection(connString))
             {
-                OleDbCommand comm = new OleDbCommand("SELECT Crossroad, Refcrossroad, Direct, Var_lambda, Var_Mu FROM RoadsNet", connect);
+                OdbcCommand comm = new OdbcCommand("SELECT * FROM RoadsNet", dbcon);
                 dbcon.Open();
-                OleDbDataAdapter adapter = new OleDbDataAdapter(comm);
+                OdbcDataAdapter adapter = new OdbcDataAdapter(comm);
                 adapter.Fill(DtTable);
+                dbcon.Close();
             }
             //массив отношения перекрёстков и направлениям к машинам
-            int[][,] JagArrofData = new int[10][,];
-            for (int i = 0; i < 10; i++)
+            int[][,] JagArrofData = new int[11][,];
+            for (int i = 1; i < 11; i++)
             {
                 JagArrofData[i] = new int[4, 5]; //4 строки, 5 столбцов
                 for (int a = 0; a < 4; a++) //DtTable.Rows.Count
                 {
-                    JagArrofData[i][a, 0] = Convert.ToInt32(DtTable.Rows[a]["Crossroad"]);
-                    JagArrofData[i][a, 1] = Convert.ToInt32(DtTable.Rows[a]["Refcrossroad"]);
+                    JagArrofData[i][a, 0] = Convert.ToInt32(DtTable.Rows[a]["Сrossroad"]);
+                    JagArrofData[i][a, 1] = Convert.ToInt32(DtTable.Rows[a]["RefCrossrd"]);
                     JagArrofData[i][a, 2] = Convert.ToInt32(DtTable.Rows[a]["Direct"]);
-                    JagArrofData[i][a, 3] = Convert.ToInt32(DtTable.Rows[a]["Var_lambda"]);
+                    JagArrofData[i][a, 3] = Convert.ToInt32(DtTable.Rows[a]["Var_Lambda"]);
                     JagArrofData[i][a, 4] = Convert.ToInt32(DtTable.Rows[a]["Var_Mu"]);
-                    Console.Write("Отсчётный светофор {0}, Светофор(j) {1}, Направление(i) {2}, Lambda", JagArrofData[i][a, 1], JagArrofData[i][a, 2], "{3},", "Mu", JagArrofData[i][a, 1], JagArrofData[i][a, 2], "{4},", JagArrofData[i][a, 0], JagArrofData[i][a, 1], JagArrofData[i][a, 2], JagArrofData[i][a, 3], JagArrofData[i][a, 4]);
+                    Console.Write("Отсчётный светофор {0}, Светофор(j) {1}, Направление(i) {2}, Lambda {3}, Mu {4},", i, JagArrofData[i][a, 1], JagArrofData[i][a, 2], JagArrofData[i][a, 3], JagArrofData[i][a, 4]);
                     Console.WriteLine();
                 }
             }
